@@ -1,6 +1,7 @@
 import humanize
 from datetime import datetime
 from utils.request import DataDict
+from pytz import timezone
 
 
 def show_tasas(data: DataDict):
@@ -10,7 +11,7 @@ def show_tasas(data: DataDict):
     # Convertir la fecha/hora a timezone-aware
     date_time_str = f"{data['date']} {data['hour']}:{data['minutes']}:{data['seconds']}"
     date_time = datetime.strptime(
-        date_time_str, "%Y-%m-%d %H:%M:%S")
+        date_time_str, "%Y-%m-%d %H:%M:%S").astimezone(timezone('America/Havana'))
 
     humanize.i18n.activate("es")
     time = humanize.naturaltime(date_time)
