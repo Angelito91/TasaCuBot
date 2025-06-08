@@ -1,6 +1,6 @@
 # Tasas de Cuba Bot 🇨🇺
 
-Bot de Telegram para consultar las tasas de cambio informales en Cuba de manera rápida y precisa.
+Bot de Telegram para consultar las tasas de cambio informales en Cuba de manera rápida y precisa: [https://t.me/tasacubot](https://t.me/tasacubot)
 
 ## Funcionalidades 🚀
 
