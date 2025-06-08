@@ -1,4 +1,5 @@
 import humanize
+import pytz
 from datetime import datetime
 
 from utils.request import DataDict
@@ -7,12 +8,21 @@ from utils.request import DataDict
 def show_tasas(data: DataDict):
     """Genera un mensaje con las tasas de cambio actuales usando Markdown"""
     tasas = data["tasas"]
+
+    # Zona horaria de Cuba
+    cuba_tz = pytz.timezone('America/Havana')
+
+    # Hora actual UTC
+    now_utc = datetime.now(datetime.timezone.utc)
+
+    # Convertir UTC a Cuba
+    now_cuba = now_utc.astimezone(cuba_tz)
     date_time_str = f"{data['date']} {data['hour']}:{data['minutes']}:{data['seconds']}"
     date_time = datetime.strptime(date_time_str, "%Y-%m-%d %H:%M:%S")
     humanize.i18n.activate("es")
     time = humanize.naturaltime(
-        datetime.now() - date_time,
-        when=datetime.now(),
+        now_cuba - date_time,
+        when=now_cuba,
         months=True
     )
 
